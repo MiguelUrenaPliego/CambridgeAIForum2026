@@ -140,15 +140,21 @@ html: true
 <div class="col-grid">
 <div>
 <div class="col-label">Boston</div>
+<div class="iframe-zoom">
 <iframe src="https://cs-futurecities.media.mit.edu/cs_transit_score/boston/"></iframe>
+</div>
 </div>
 <div>
 <div class="col-label">Taipei</div>
+<div class="iframe-zoom">
 <iframe src="https://cs-futurecities.media.mit.edu/cs_transit_score/taipei/"></iframe>
+</div>
 </div>
 <div>
 <div class="col-label">Guadalajara</div>
+<div class="iframe-zoom">
 <iframe src="https://cs-futurecities.media.mit.edu/cs_transit_score/guadalajara/"></iframe>
+</div>
 </div>
 </div>
 

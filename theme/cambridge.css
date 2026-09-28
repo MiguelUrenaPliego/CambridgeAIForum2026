@@ -295,11 +295,22 @@ section.statement::after { display: none; }
   flex-direction: column;
   gap: 8px;
 }
-.col-grid iframe {
-  width: 100%;
+.col-grid .iframe-zoom {
   flex: 1;
+  position: relative;
+  overflow: hidden;
   border: 2px solid var(--ink);
   border-radius: 4px;
+}
+.col-grid .iframe-zoom iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 143%;
+  height: 143%;
+  transform: scale(0.7);
+  transform-origin: top left;
+  border: none;
 }
 .col-grid .col-label {
   font-family: 'IBM Plex Mono', monospace;
