@@ -1,0 +1,325 @@
+/* @theme cambridge */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #231F20;
+  --paper: #FFFFFF;
+  --cyan: #0DCAF2;
+  --magenta: #E40DF2;
+  --pink-title: #E40DF2;
+  --red: #ED1C24;
+  --muted: #6b6668;
+}
+
+section {
+  width: 1280px;
+  height: 720px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+  padding: 64px 80px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-top: 4px solid var(--ink);
+}
+
+/* No footer branding or page numbers on normal slides */
+section::before,
+section::after { content: none; display: none; }
+
+h1, h2, h3 {
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px 0;
+}
+
+h1 { font-size: 40pt; }
+h2 { font-size: 28pt; }
+h3 { font-size: 22pt; }
+
+p, li { font-size: 20pt; line-height: 1.45; }
+
+code, pre {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+a { color: var(--magenta); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+strong { font-weight: 700; }
+
+/* ============ TITLE SLIDE ============ */
+section.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 100px;
+}
+section.title h1 {
+  font-size: 30pt;
+  font-weight: 600;
+  color: var(--ink);
+  max-width: 1000px;
+}
+section.title .kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13pt;
+  color: var(--magenta);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+section.title::after,
+section.title::before { display: none; }
+section.title .title-logo {
+  height: 110px;
+  width: 339px;
+  display: block;
+  margin-bottom: 36px;
+}
+section.title .title-affiliations,
+section.closing .title-affiliations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+section.title .title-affiliations img,
+section.closing .title-affiliations img {
+  height: 64px;
+  width: auto;
+}
+
+/* ============ CLOSING SLIDE ============ */
+section.closing {
+  display: block;
+  text-align: center;
+}
+section.closing .closing-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  height: 100%;
+}
+section.closing .closing-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section.closing .title-logo {
+  height: 130px;
+  width: 401px;
+  display: block;
+  margin: 0 auto 40px auto;
+}
+section.closing h1 {
+  font-size: 56pt;
+  margin: 0 0 14px 0;
+}
+section.closing .kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 20pt;
+  color: var(--magenta);
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+section.closing .title-affiliations {
+  margin-bottom: 24px;
+}
+section.closing .contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+section.closing .contact-links a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15pt;
+  color: var(--ink);
+}
+section.closing .contact-links a:hover {
+  color: var(--magenta);
+}
+section.closing::after,
+section.closing::before { display: none; }
+section.closing .qr-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+section.closing .qr-block img {
+  width: 160px;
+  height: 160px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 8px;
+  background: #FFFFFF;
+}
+section.closing .qr-block span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13pt;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ============ ABOUT ME ============ */
+section.about {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 56px;
+}
+section.about .photo-col {
+  flex: 0 0 300px;
+}
+section.about .photo-col img {
+  width: 100%;
+  border-radius: 6px;
+  border: 3px solid var(--ink);
+}
+section.about .text-col {
+  flex: 1;
+}
+section.about .text-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+section.about .text-col li {
+  font-size: 22pt;
+  font-weight: 600;
+  padding: 14px 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+section.about .text-col li:first-child {
+  color: var(--magenta);
+}
+
+/* ============ PINK TITLE (left-aligned pink pill, in-flow) ============ */
+section.ptitle h1 {
+  display: table;
+  margin: 0 0 28px 0;
+  font-size: 32pt;
+  color: #FFFFFF;
+  background: var(--pink-title);
+  padding: 8px 24px;
+  border-radius: 4px;
+}
+
+/* ============ FULL-BLEED MEDIA (image/video/iframe fill slide, no borders) ============ */
+section.bleed {
+  padding: 0;
+  display: block;
+}
+section.bleed h1 {
+  position: absolute;
+  top: 28px;
+  left: 40px;
+  z-index: 30;
+  font-size: 38pt;
+  color: #FFFFFF;
+  background: var(--pink-title);
+  padding: 10px 26px;
+  border-radius: 4px;
+  margin: 0;
+}
+section.bleed::before,
+section.bleed::after { display: none; }
+section.bleed {
+  border-top: none;
+}
+section.bleed img,
+section.bleed iframe,
+section.bleed video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+section.bleed iframe.yt-video {
+  pointer-events: none;
+  object-fit: cover;
+}
+
+/* Citation, bottom-right, light color, visible over media */
+.citation {
+  position: absolute;
+  bottom: 22px;
+  right: 32px;
+  z-index: 40;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13pt;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.85), 0 0 2px rgba(0,0,0,0.6);
+  letter-spacing: 0.02em;
+}
+
+/* ============ CENTERED STATEMENT SLIDES ============ */
+section.statement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section.statement h1 {
+  font-size: 64pt;
+  text-align: center;
+  margin: 0;
+}
+section.statement h1 .neq {
+  color: var(--magenta);
+  padding: 0 18px;
+}
+section.statement::before,
+section.statement::after { display: none; }
+
+/* ============ MULTI-COLUMN WEB / IFRAME GRID ============ */
+.col-grid {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+  margin-top: 8px;
+}
+.col-grid > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.col-grid iframe {
+  width: 100%;
+  flex: 1;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+}
+.col-grid .col-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13pt;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ============ DIAGRAM SLIDES ============ */
+.diagram-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* generic content wrapper below h1, vertically centered */
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
