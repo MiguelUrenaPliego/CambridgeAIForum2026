@@ -46,12 +46,13 @@ HOW TO LAUNCH THIS DECK
 </div>
 
 <script>
-window.addEventListener('pageshow', function (event) {
-  if (!event.persisted) return;
+window.addEventListener('pageshow', function () {
+  if (navigator.webdriver) return;
   document.querySelectorAll('iframe.yt-video').forEach(function (f) {
-    var src = f.src;
-    f.src = '';
-    f.src = src;
+    var base = f.getAttribute('data-base-src') || f.src;
+    f.setAttribute('data-base-src', base);
+    var sep = base.indexOf('?') === -1 ? '?' : '&';
+    f.src = base + sep + '_r=' + Date.now();
   });
 });
 </script>
