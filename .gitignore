@@ -15,3 +15,7 @@
 
 # Exception: this video is actually used by a slide
 !figures/viewer-demo.webm
+
+# Exported slide images and the planned recap video (also covered by *.mp4 above)
+slides_export/
+presentation.mp4
