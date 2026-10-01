@@ -6,6 +6,32 @@ size: 16:9
 html: true
 ---
 
+<!--
+HOW TO LAUNCH THIS DECK
+=======================
+
+1. Rebuild the outputs after editing this file (run from this folder):
+     marp --html --theme-set theme/cambridge.css -o index.html presentation.md
+     marp --html --theme-set theme/cambridge.css --allow-local-files -o presentation.pdf presentation.md
+
+2. Present it live (required for YouTube videos, the Esquivel map, and the
+   iframes to work — they need a real http:// origin, not file:// and not
+   VS Code's built-in Marp preview webview):
+     python3 -m http.server 8000
+   then open http://localhost:8000/index.html in an actual browser tab
+   (Chrome/Firefox/Brave). Use the arrow keys / click to navigate slides.
+
+3. Publish on GitHub Pages:
+   - git push this repo to github.com/<you>/CambridgeAIForum2026
+   - enable Pages in the repo settings, serving from the root of main
+   - the published index.html will work identically to step 2, since
+     GitHub Pages serves over real HTTPS
+
+4. presentation.pdf is a static fallback only — video/iframe slides will
+   show a blank or frozen first frame there, since PDFs can't run live
+   embeds. Use it only as a backup, not for the actual talk.
+-->
+
 <!-- _class: title -->
 
 <img class="title-logo" src="logos/CAIF_logo_horizontal.png" alt="Cambridge AI Forum">
