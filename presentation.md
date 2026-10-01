@@ -12,7 +12,10 @@ HOW TO LAUNCH THIS DECK
 
 1. Rebuild the outputs after editing this file (run from this folder):
      marp --html --theme-set theme/cambridge.css -o index.html presentation.md
-     marp --html --theme-set theme/cambridge.css --allow-local-files -o presentation.pdf presentation.md
+     marp --html --theme-set theme/cambridge.css --allow-local-files --browser-timeout 0 -o presentation.pdf presentation.md
+   (the Standarization slide's 3 external map embeds are slow to fully load,
+   so --browser-timeout 0 disables Marp's default 30s cutoff — the export
+   just takes a couple of minutes, it hasn't hung)
 
 2. Present it live (required for YouTube videos, the Esquivel map, and the
    iframes to work — they need a real http:// origin, not file:// and not
@@ -46,15 +49,36 @@ HOW TO LAUNCH THIS DECK
 </div>
 
 <script>
-window.addEventListener('pageshow', function () {
+(function () {
   if (navigator.webdriver) return;
-  document.querySelectorAll('iframe.yt-video').forEach(function (f) {
+
+  function resetVideo(section) {
+    var f = section.querySelector('iframe.yt-video');
+    if (!f) return;
     var base = f.getAttribute('data-base-src') || f.src;
     f.setAttribute('data-base-src', base);
     var sep = base.indexOf('?') === -1 ? '?' : '&';
     f.src = base + sep + '_r=' + Date.now();
+  }
+
+  // Restart the video every time Marp activates its slide, in either
+  // navigation direction (next/prev/overview/jump), not just on reload.
+  new MutationObserver(function (mutations) {
+    mutations.forEach(function (m) {
+      var el = m.target;
+      if (el.tagName === 'SECTION' && el.classList.contains('bespoke-marp-active')) {
+        resetVideo(el);
+      }
+    });
+  }).observe(document.body, { attributes: true, attributeFilter: ['class'], subtree: true });
+
+  // Also restart on a full reload or a back/forward-cache restore, for
+  // whichever slide happens to already be active at that moment.
+  window.addEventListener('pageshow', function () {
+    var active = document.querySelector('section.bespoke-marp-active');
+    if (active) resetVideo(active);
   });
-});
+})();
 </script>
 
 ---
