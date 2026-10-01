@@ -52,8 +52,8 @@ HOW TO LAUNCH THIS DECK
 (function () {
   if (navigator.webdriver) return;
 
-  function resetVideo(section) {
-    var f = section.querySelector('iframe.yt-video');
+  function resetVideo(container) {
+    var f = container.querySelector('iframe.yt-video');
     if (!f) return;
     var base = f.getAttribute('data-base-src') || f.src;
     f.setAttribute('data-base-src', base);
@@ -63,10 +63,12 @@ HOW TO LAUNCH THIS DECK
 
   // Restart the video every time Marp activates its slide, in either
   // navigation direction (next/prev/overview/jump), not just on reload.
+  // Marp wraps each slide as <svg><foreignObject><section>, and the
+  // active-state class lands on that <svg> wrapper, not the <section>.
   new MutationObserver(function (mutations) {
     mutations.forEach(function (m) {
       var el = m.target;
-      if (el.tagName === 'SECTION' && el.classList.contains('bespoke-marp-active')) {
+      if (el.classList && el.classList.contains('bespoke-marp-active')) {
         resetVideo(el);
       }
     });
@@ -75,7 +77,7 @@ HOW TO LAUNCH THIS DECK
   // Also restart on a full reload or a back/forward-cache restore, for
   // whichever slide happens to already be active at that moment.
   window.addEventListener('pageshow', function () {
-    var active = document.querySelector('section.bespoke-marp-active');
+    var active = document.querySelector('.bespoke-marp-active');
     if (active) resetVideo(active);
   });
 })();
