@@ -19,6 +19,16 @@ html: true
 <img src="logos/CS_logo_light.png" alt="City Science">
 </div>
 
+<script>
+window.addEventListener('pageshow', function () {
+  document.querySelectorAll('iframe.yt-video').forEach(function (f) {
+    var src = f.src;
+    f.src = '';
+    f.src = src;
+  });
+});
+</script>
+
 ---
 
 <!-- _class: about -->
@@ -109,13 +119,13 @@ html: true
 
 <!-- _class: bleed -->
 
-![](figures/real-interface.png)
+<iframe src="https://miguelurenapliego.github.io/ProjektAnlagenring/ABsurveys/map.html"></iframe>
 
 ---
 
 <!-- _class: bleed -->
 
-<iframe src="https://miguelurenapliego.github.io/ProjektAnlagenring/ABsurveys/map.html"></iframe>
+![](figures/real-interface.png)
 
 ---
 
@@ -141,19 +151,19 @@ html: true
 <div>
 <div class="col-label">Boston</div>
 <div class="iframe-zoom">
-<iframe src="https://cs-futurecities.media.mit.edu/cs_transit_score/boston/"></iframe>
+<iframe src="https://cs-futurecities.media.mit.edu/cs_transit_score/boston/nolegend"></iframe>
 </div>
 </div>
 <div>
 <div class="col-label">Taipei</div>
 <div class="iframe-zoom">
-<iframe src="https://cs-futurecities.media.mit.edu/cs_transit_score/taipei/"></iframe>
+<iframe src="https://cs-futurecities.media.mit.edu/cs_transit_score/taipei/nolegend"></iframe>
 </div>
 </div>
 <div>
 <div class="col-label">Guadalajara</div>
 <div class="iframe-zoom">
-<iframe src="https://cs-futurecities.media.mit.edu/cs_transit_score/guadalajara/"></iframe>
+<iframe src="https://cs-futurecities.media.mit.edu/cs_transit_score/guadalajara/nolegend"></iframe>
 </div>
 </div>
 </div>
