@@ -1,2 +1,17 @@
 .DS_Store
 *.pdf
+
+# Video/audio source/export files and Kdenlive project files
+*.mp4
+*.webm
+*.mov
+*.mkv
+*.avi
+*.m4v
+*.m4a
+*.vtt
+*.kdenlive
+*.kdenlivetitle
+
+# Exception: this video is actually used by a slide
+!figures/viewer-demo.webm
