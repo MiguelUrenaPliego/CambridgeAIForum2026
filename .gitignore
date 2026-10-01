@@ -19,3 +19,6 @@
 # Exported slide images and the planned recap video (also covered by *.mp4 above)
 slides_export/
 presentation.mp4
+
+# Working draft, not meant for the published repo
+presentation_draft.md
