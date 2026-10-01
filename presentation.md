@@ -52,13 +52,34 @@ HOW TO LAUNCH THIS DECK
 (function () {
   if (navigator.webdriver) return;
 
+  var lastReset = new WeakMap();
+
   function resetVideo(container) {
     var f = container.querySelector('iframe.yt-video');
     if (!f) return;
+
+    // Marp's bespoke engine fires the active-state class mutation 2-3
+    // times per single slide switch (it briefly toggles a "-ready"
+    // suffix class right after activating). Debounce so we only ever
+    // reload the embed once per real navigation, not 2-3 times --
+    // repeated interrupted reloads is what made it look stuck black.
+    var now = Date.now();
+    var last = lastReset.get(f) || 0;
+    if (now - last < 800) return;
+    lastReset.set(f, now);
+
+    if (!f.dataset.loadBound) {
+      f.dataset.loadBound = '1';
+      f.addEventListener('load', function () {
+        f.classList.add('yt-loaded');
+      });
+    }
+    f.classList.remove('yt-loaded');
+
     var base = f.getAttribute('data-base-src') || f.src;
     f.setAttribute('data-base-src', base);
     var sep = base.indexOf('?') === -1 ? '?' : '&';
-    f.src = base + sep + '_r=' + Date.now();
+    f.src = base + sep + '_r=' + now;
   }
 
   // Restart the video every time Marp activates its slide, in either
@@ -119,6 +140,7 @@ HOW TO LAUNCH THIS DECK
 
 # The city science process
 
+<img class="yt-poster" src="https://img.youtube.com/vi/lFXMshEGBSk/hqdefault.jpg" alt="">
 <iframe class="yt-video" tabindex="-1" src="https://www.youtube.com/embed/lFXMshEGBSk?autoplay=1&mute=1&start=15&controls=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 <div class="citation">Ariel Noyman</div>
@@ -127,6 +149,7 @@ HOW TO LAUNCH THIS DECK
 
 <!-- _class: bleed -->
 
+<img class="yt-poster" src="https://img.youtube.com/vi/SyIRsLoWTgA/hqdefault.jpg" alt="">
 <iframe class="yt-video" tabindex="-1" src="https://www.youtube.com/embed/SyIRsLoWTgA?autoplay=1&mute=1&start=13&controls=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 <div class="citation">SimCity 2013</div>
@@ -141,6 +164,7 @@ HOW TO LAUNCH THIS DECK
 
 <!-- _class: bleed -->
 
+<img class="yt-poster" src="https://img.youtube.com/vi/A-PEplqD0Ho/hqdefault.jpg" alt="">
 <iframe class="yt-video" tabindex="-1" src="https://www.youtube.com/embed/A-PEplqD0Ho?autoplay=1&mute=1&start=15&controls=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 <div class="citation">Vissum</div>
@@ -151,6 +175,7 @@ HOW TO LAUNCH THIS DECK
 
 # Humanized agents
 
+<img class="yt-poster" src="https://img.youtube.com/vi/k8jp33HV9GA/hqdefault.jpg" alt="">
 <iframe class="yt-video" tabindex="-1" src="https://www.youtube.com/embed/k8jp33HV9GA?autoplay=1&mute=1&start=0&controls=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 <div class="citation">Parfait Atchadé</div>

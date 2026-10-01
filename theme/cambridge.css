@@ -247,6 +247,15 @@ section.bleed video {
 section.bleed iframe.yt-video {
   pointer-events: none;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: #000;
+}
+section.bleed iframe.yt-video.yt-loaded {
+  opacity: 1;
+}
+section.bleed img.yt-poster {
+  object-fit: cover;
 }
 
 /* Citation, bottom-right, light color, visible over media */

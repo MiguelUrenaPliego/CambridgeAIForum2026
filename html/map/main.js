@@ -194,7 +194,7 @@ const map = new maplibregl.Map({
   container: "map",
   style: MAP_STYLE,
   center: [-84.09, 9.94],
-  zoom: 13,
+  zoom: 14,
   pitch: SHOWCASE_PITCH,
   bearing: 0,
   attributionControl: false,
