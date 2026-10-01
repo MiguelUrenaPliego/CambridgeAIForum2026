@@ -20,7 +20,8 @@ html: true
 </div>
 
 <script>
-window.addEventListener('pageshow', function () {
+window.addEventListener('pageshow', function (event) {
+  if (!event.persisted) return;
   document.querySelectorAll('iframe.yt-video').forEach(function (f) {
     var src = f.src;
     f.src = '';
