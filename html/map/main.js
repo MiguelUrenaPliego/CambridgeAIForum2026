@@ -19,7 +19,7 @@
 const { GeoJsonLayer } = deck;
 const { MapboxOverlay } = deck;
 
-const DATA_DIR = "./data/esquivel";
+const DATA_DIR = "./data";
 const BASE_TITLE = document.title;
 
 // ---------------------------------------------------------------------------
